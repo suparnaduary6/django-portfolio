@@ -1,0 +1,763 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* ===== BODY ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    font-family:Arial, sans-serif;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    max-width:1200px;
+}
+
+/* ================= SECTION ================= */
+
+section{
+    padding:90px 0;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    background:#020617;
+    padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+
+/* LOGO BIG */
+
+.navbar-brand{
+    font-size:32px !important;
+    font-weight:700;
+    color:#facc15 !important;
+}
+
+/* MENU SMALL */
+
+.navbar .nav-link{
+    color:black;
+    margin-left:10px;
+    padding:6px 14px !important;   /* ছোট box */
+    font-size:14px;                /* ছোট লেখা */
+    border-radius:8px;
+    background:#facc15;
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.3s;
+    font-weight:500;
+}
+
+/* HOVER */
+
+.navbar .nav-link:hover{
+    background:#1e293b;
+    color:black !important;
+    transform:translateY(-2px);
+}
+
+/* ACTIVE */
+
+.navbar .nav-link.active{
+    background:#facc15;
+    color:black !important;
+    font-weight:bold;
+}
+
+/* ================= HERO ================= */
+
+#home{
+    min-height:100vh;
+}
+
+.hero-img{
+    width:320px;
+    height:320px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #facc15;
+    box-shadow:0 0 30px rgba(250,204,21,0.3);
+}
+
+#home h1{
+    font-size:40px;
+    font-weight:700;
+}
+
+#home h3{
+    color:#facc15;
+    margin-top:10px;
+}
+
+#home p{
+    color:#cbd5e1;
+    line-height:1.8;
+    max-width:550px;
+}
+
+.btn-warning{
+    padding:10px 24px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+/* ================= TITLES ================= */
+
+h2{
+    font-size:38px;
+    font-weight:700;
+    margin-bottom:30px;
+    color:#facc15 !important;
+}
+
+/* ================= ABOUT ================= */
+
+#about p{
+    color:#cbd5e1;
+    line-height:1.9;
+    font-size:17px;
+}
+/* ABOUT TEXT */
+
+.about-text{
+    font-size:18px;
+    line-height:2;
+    color:#cbd5e1;
+    max-width:900px;
+    text-align:justify;
+    padding:25px;
+    background:#1e293b;
+    border-left:5px solid #facc15;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+/* HOVER EFFECT */
+
+.about-text:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(250,204,21,0.15);
+}
+/* ================= SKILLS SECTION ================= */
+/* SKILLS - SAME LEVEL AS ABOUT */
+.skills-box{
+    max-width:900px;
+    margin:0;
+    background:#1e293b;
+    padding:30px;
+    border-left:5px solid #facc15;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.skills-section{
+    padding:90px 0;
+}
+
+
+/* TITLE */
+
+.skills-box h2{
+    font-size:38px;
+    color:#facc15;
+    font-weight:700;
+}
+
+/* DESCRIPTION */
+
+.skills-description{
+    color:#cbd5e1;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+/* SKILL CARD */
+
+.skill-card{
+    background:#111827;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:15px;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+}
+
+.skill-card:hover{
+    transform:translateY(-5px);
+}
+
+/* PROGRESS */
+
+.progress{
+    height:8px;
+    background:#334155;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    border-radius:20px;
+}
+
+
+/* COLORS */
+
+.html-bar{
+    width:90%;
+    background:#f97316 !important;
+}
+
+.css-bar{
+    width:85%;
+    background:#3b82f6 !important;
+}
+
+.js-bar{
+    width:80%;
+    background:#facc15 !important;
+}
+
+.django-bar{
+    width:75%;
+    background:#22c55e !important;
+}
+
+/* ================= PROJECTS ================= */
+
+.project-title{
+    font-size:40px;
+    color:#facc15;
+    font-weight:700;
+    margin-bottom:40px;
+}
+
+.project-title::after{
+    content:'';
+    width:70px;
+    height:3px;
+    background:#facc15;
+    display:block;
+    margin-top:8px;
+    border-radius:10px;
+}
+
+/* CARD */
+
+.project-card{
+    background:#1e293b;
+    border-radius:18px;
+    padding:25px;
+    transition:0.4s;
+    border:1px solid rgba(255,255,255,0.05);
+    overflow:hidden;
+    height:100%;
+}
+
+/* HOVER EFFECT */
+
+.project-card:hover{
+    transform:translateY(-10px) scale(1.02);
+    background:linear-gradient(135deg,#facc15,#f97316);
+    box-shadow:0 15px 30px rgba(249,115,22,0.4);
+}
+
+/* IMAGE */
+
+.project-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* TITLE */
+
+.project-card h5{
+    color:#facc15;
+    margin-top:15px;
+    font-weight:700;
+    transition:0.3s;
+}
+
+/* TEXT */
+
+.project-card p{
+    color:#cbd5e1;
+    font-size:15px;
+    line-height:1.7;
+    transition:0.3s;
+}
+
+/* HOVER TEXT */
+
+.project-card:hover h5,
+.project-card:hover p{
+    color:black;
+}
+
+/* BUTTON */
+
+.project-btn{
+    display:inline-block;
+    margin-top:12px;
+    background:#facc15;
+    color:black;
+    padding:8px 16px;
+    border-radius:10px;
+    font-weight:600;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+/* BUTTON HOVER */
+
+.project-btn:hover{
+    background:black;
+    color:white;
+}
+
+/* CARD BUTTON ON HOVER */
+
+.project-card:hover .project-btn{
+    background:black;
+    color:white;
+}
+
+/* ================= CONTACT ================= */
+
+form{
+    background:#111827;
+    padding:30px;
+    border-radius:20px;
+}
+
+/* INPUT PLACEHOLDER COLOR */
+
+.form-control::placeholder{
+    color:#cbd5e1 !important;
+    opacity:1;
+}
+
+.form-control{
+    background:#1e293b !important;
+    border:1px solid rgba(255,255,255,0.1);
+    color:white !important;
+    padding:14px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background:#020617;
+    padding:40px 0;
+    text-align:center;
+    margin-top:80px;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer h3{
+    color:#facc15;
+    margin-bottom:10px;
+}
+
+.footer p{
+    color:#94a3b8;
+}
+
+/* SOCIAL LINKS */
+
+.social{
+    margin-top:20px;
+}
+
+.social a{
+    color:#cbd5e1;
+    text-decoration:none;
+    margin:0 15px;
+    font-size:16px;
+    position:relative;
+    transition:0.3s;
+}
+
+/* UNDERLINE EFFECT */
+
+.social a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0;
+    height:2px;
+    background:#facc15;
+    transition:0.3s;
+}
+
+.social a:hover{
+    color:#93c5fd;
+    text-decoration:underline;
+}
+.copy{
+    font-size:14px;
+    margin-top:15px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+    section{
+        padding:70px 0;
+    }
+
+    #home{
+        text-align:center;
+    }
+
+    #home h1{
+        font-size:38px;
+    }
+
+    .hero-img{
+        width:220px;
+        height:220px;
+        margin-top:30px;
+    }
+
+    .skills-title{
+        font-size:34px !important;
+        margin-bottom:15px;
+    }
+
+    .project-title{
+        font-size:34px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+
+<div class="container">
+
+    <a class="navbar-brand text-warning fw-bold" href="#home">
+        My Portfolio
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+
+        <ul class="navbar-nav ms-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" href="#home">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#skills">Skills</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#projects">Projects</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+<section id="home" class="container min-vh-100 d-flex align-items-center">
+
+<div class="row w-100 align-items-center">
+
+    <div class="col-md-6 text-center text-md-start">
+
+        <h1 class="display-4 fw-bold">
+            Hello, I'm <span class="text-warning">Suparna Duary</span>
+        </h1>
+
+        <h3 class="mt-3">Frontend & Django Developer</h3>
+
+        <p class="mt-3">
+            I build modern responsive websites using HTML, CSS, Python, Bootstrap & Django.
+        </p>
+
+        <a href="#contact" class="btn btn-warning me-3">Hire Me</a>
+        <div class="mt-3">
+
+      </a>
+
+    <a href="{% static 'resume/resume.pdf' %}" 
+   download 
+   class="btn btn-outline-light">
+
+   Download CV
+</a>
+
+</div>
+
+    </div>
+
+    <div class="col-md-6 text-center mt-4 mt-md-0">
+
+        <img src="{% static 'images/suparna.jpg' %}" class="hero-img">
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="container">
+
+<h2 class="text-warning mb-3">About Me</h2>
+
+<p class="about-text">
+    I am a passionate Frontend and Backend Developer with a strong interest in building modern, responsive, and user-friendly web applications. I enjoy creating clean and interactive user interfaces while also developing efficient backend functionalities using Django.
+
+    I have experience working with HTML, CSS, Bootstrap, and Django, and I continuously improve my skills by building real-world projects and exploring new technologies. My goal is to develop applications that provide both great user experience and reliable performance.
+</p>
+
+</section>
+
+
+<!-- SKILLS SECTION -->
+
+<section id="skills" class="skills-section">
+    <div class="container">
+        <div class="skills-box">
+    <!-- TITLE -->
+    <h2 class="text-warning mb-3">
+        Skills
+    </h2>
+
+    <!-- DESCRIPTION -->
+    <p class="skills-description">
+        I have experience working with frontend and backend technologies to build responsive and user-friendly web applications.
+    </p>
+
+    <!-- HTML -->
+    <div class="skill-card mb-4">
+
+        <div class="d-flex justify-content-between">
+            <h5>HTML</h5>
+            <span>90%</span>
+        </div>
+
+        <div class="progress mt-3">
+            <div class="progress-bar html-bar"></div>
+        </div>
+
+    </div>
+
+    <!-- CSS -->
+    <div class="skill-card mb-4">
+
+        <div class="d-flex justify-content-between">
+            <h5>CSS</h5>
+            <span>85%</span>
+        </div>
+
+        <div class="progress mt-3">
+            <div class="progress-bar css-bar"></div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <div class="skill-card mb-4">
+
+        <div class="d-flex justify-content-between">
+            <h5>Python</h5>
+            <span>80%</span>
+        </div>
+
+        <div class="progress mt-3">
+            <div class="progress-bar js-bar"></div>
+        </div>
+
+    </div>
+
+    <!-- DJANGO -->
+<div class="skill-card">
+
+    <div class="d-flex justify-content-between">
+        <h5>Django</h5>
+        <span>75%</span>
+    </div>
+
+    <div class="progress mt-3">
+        <div class="progress-bar django-bar"></div>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- PROJECTS -->
+
+<section id="projects" class="container py-5">
+
+<!-- TITLE (LEFT SIDE) -->
+<h2 class="project-title">My Projects</h2>
+
+<div class="row g-4">
+
+    <!-- STATIC PROJECTS -->
+    <div class="col-md-4">
+        <div class="project-card">
+            <h5>Portfolio Website</h5>
+            <p>My personal portfolio using Django.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="project-card">
+            <h5>Weather App</h5>
+            <p>API based weather application.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="project-card">
+            <h5>RedBus Clone</h5>
+            <p>Frontend clone project using HTML, CSS, JS.</p>
+        </div>
+    </div>
+
+    <!-- DYNAMIC PROJECTS -->
+    {% for project in projects %}
+    <div class="col-md-4">
+
+        <div class="project-card">
+
+            <img src="{{ project.image.url }}" alt="project">
+
+            <h5>{{ project.title }}</h5>
+            <p>{{ project.description }}</p>
+
+            {% if project.link %}
+            <a href="{{ project.link }}" target="_blank" class="project-btn">
+                View Project
+            </a>
+            {% endif %}
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+</section>
+        
+
+
+<!-- CONTACT -->
+<section id="contact" class="container">
+
+<h2 class="text-warning mb-4">Contact Me</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input type="text" name="name" class="form-control mb-3" placeholder="Your Name">
+
+<input type="email" name="email" class="form-control mb-3" placeholder="Your Email">
+
+<textarea name="message" rows="5" class="form-control mb-3" placeholder="Message"></textarea>
+
+<button class="btn btn-warning">Send</button>
+
+</form>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+
+        <h3>Suparna Duary</h3>
+        <p>Frontend & Django Developer</p>
+
+       <div class="social">
+    <a href="https://github.com/yourusername" target="_blank">
+        GitHub
+    </a>
+
+    <a href="https://www.linkedin.com/in/suparna-duary-86bb28352" target="_blank">
+        LinkedIn
+    </a>
+
+    <a href="mailto:yourmail@gmail.com">
+        Email
+    </a>
+</div>
+
+        <p class="copy">
+            © 2026 All Rights Reserved
+        </p>
+
+    </div>
+</footer>
+
+
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
