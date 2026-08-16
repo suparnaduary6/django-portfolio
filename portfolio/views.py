@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import Contact, Project
 
@@ -6,7 +5,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-@login_required(login_url='login')
+
 def home(request):
 
     projects = Project.objects.all()
@@ -24,8 +23,10 @@ def home(request):
 
     return render(request, 'home.html', {'projects': projects})
 
+
 @csrf_exempt
 def chatbot(request):
+
     if request.method == "POST":
         data = json.loads(request.body)
         msg = data.get("message", "").lower()

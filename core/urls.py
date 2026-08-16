@@ -3,7 +3,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    path('', include('portfolio.urls')),   # 👈 homepage (portfolio)
-    path('accounts/', include('accounts.urls')),  # 👈 login/signup
+    path('', include('portfolio.urls')),
 ]
+
+
+
